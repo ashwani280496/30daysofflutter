@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'Pages/home_pages.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -10,14 +12,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      home: Material(
-        child: Center(
-          child: Container(
-            child: Text("Welcome to flutter"),
-          ),
-        ),
-      ),
-    );
+    return MaterialApp(home: HomePage());
   }
 }
