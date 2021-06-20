@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'Pages/home_pages.dart';
+import 'Pages/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,6 +14,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomePage());
+    return MaterialApp(
+      themeMode: ThemeMode.light,
+      theme: ThemeData(
+          primaryColor: Colors.purple,
+          fontFamily: GoogleFonts.lato().fontFamily),
+      initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the Login Screen widget.
+        '/': (context) => LoginPage(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/home': (context) => HomePage(),
+      },
+    );
   }
 }
