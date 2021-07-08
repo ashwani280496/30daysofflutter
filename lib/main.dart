@@ -21,9 +21,7 @@ class MyApp extends StatelessWidget {
           fontFamily: GoogleFonts.lato().fontFamily, primarySwatch: Colors.red),
       initialRoute: '/',
       routes: {
-        // When navigating to the "/" route, build the Login Screen widget.
         '/': (context) => LoginPage(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
         MyRoutes.home: (context) => HomePage(),
       },
     );
