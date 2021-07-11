@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_catelog/Helper/routes.dart';
+import 'package:flutter_catelog/widgets/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'Pages/home_pages.dart';
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
-      theme: ThemeData(
-          fontFamily: GoogleFonts.lato().fontFamily, primarySwatch: Colors.red),
+      theme: MyThemes.lightTheme(context),
       initialRoute: MyRoutes.home,
+      // darkTheme: ThemeData(brightness: Brightness.dark),
       routes: {
         '/': (context) => LoginPage(),
         MyRoutes.home: (context) => HomePage(),
