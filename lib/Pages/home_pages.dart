@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catelog/models/Item.dart';
 import 'package:flutter_catelog/widgets/myDrawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,10 +19,7 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Container(
           child: ListView(
-            children: [
-              // Image.network(
-              //     "https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
-            ],
+            children: [Image.network(products[0].imageUrl)],
           ),
         ),
       ),
