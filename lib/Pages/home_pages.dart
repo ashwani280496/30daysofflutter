@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catelog/widgets/myDrawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,10 +17,15 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Container(
-          child: Text("Welcome to flutter"),
+          child: ListView(
+            children: [
+              // Image.network(
+              //     "https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
+            ],
+          ),
         ),
       ),
-      drawer: Drawer(elevation: 10),
+      drawer: MyDrawer(),
     );
   }
 }

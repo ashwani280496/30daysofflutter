@@ -19,11 +19,11 @@ class _LoginPageState extends State<LoginPage> {
         isButtonPressed = true;
       });
 
-      // await Future.delayed(Duration(seconds: 1));
-      // await Navigator.pushNamed(context, MyRoutes.home);
-      // setState(() {
-      //   isButtonPressed = false;
-      // });
+      await Future.delayed(Duration(seconds: 1));
+      await Navigator.pushNamed(context, MyRoutes.home);
+      setState(() {
+        isButtonPressed = false;
+      });
     }
   }
 
