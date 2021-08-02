@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catelog/models/Item.dart';
+import 'package:flutter_catelog/widgets/item_widget.dart';
 import 'package:flutter_catelog/widgets/myDrawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,17 +13,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final dummyList = List.generate(50, (index) => Store.items.first);
     return Scaffold(
       appBar: AppBar(
         title: Text("Title"),
       ),
-      body: Center(
-        child: Container(
-          child: ListView(
-            children: [Image.network(products[0].imageUrl)],
-          ),
-        ),
-      ),
+      body: ListView.builder(
+          itemCount: dummyList.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(item: dummyList[index]);
+          }),
       drawer: MyDrawer(),
     );
   }
