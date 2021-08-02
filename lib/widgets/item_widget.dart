@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_catelog/models/Item.dart';
 
 class ItemWidget extends StatelessWidget {
-  final Product item;
+  final Item item;
 
   const ItemWidget({Key? key, required this.item}) : super(key: key);
 
@@ -13,7 +13,7 @@ class ItemWidget extends StatelessWidget {
         onTap: () {
           print("${item.name} tapped");
         },
-        leading: Image.network(item.imageUrl),
+        leading: Image.network(item.image),
         title: Text(item.name),
         subtitle: Text(item.desc),
         trailing: Text(
