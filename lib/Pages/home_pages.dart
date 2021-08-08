@@ -1,9 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:convert';
 import 'package:flutter_catelog/models/Item.dart';
-import 'package:flutter_catelog/widgets/item_widget.dart';
 import 'package:flutter_catelog/widgets/myDrawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,11 +24,18 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Title"),
       ),
-      body: (Store.items != null && Store.items.isNotEmpty)
-          ? ListView.builder(
-              itemCount: Store.items.length,
+      body: (Store.items.isNotEmpty)
+          ? GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
               itemBuilder: (context, index) {
-                return ItemWidget(item: Store.items[index]);
+                final item = Store.items[index];
+
+                return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: GridTile(child: Image.network(item.image)));
               })
           : Center(
               child: CircularProgressIndicator(
