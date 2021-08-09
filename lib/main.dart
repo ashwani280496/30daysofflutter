@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_catelog/Helper/routes.dart';
 import 'package:flutter_catelog/widgets/themes.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'Pages/home_pages.dart';
 import 'Pages/login_page.dart';
