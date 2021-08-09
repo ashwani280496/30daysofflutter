@@ -12,6 +12,7 @@ class HomeDetailsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyThemes.creamyColor,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: catelog.name.text.color(MyThemes.blueishColor).xl2.make(),
       ),
       bottomNavigationBar: Container(
@@ -26,8 +27,8 @@ class HomeDetailsPage extends StatelessWidget {
                             MaterialStateProperty.all(MyThemes.blueishColor),
                         shape: MaterialStateProperty.all(StadiumBorder())),
                     onPressed: () {},
-                    child: "Buy".text.bold.make())
-                .wh(100, 50)
+                    child: "Add to cart".text.bold.make())
+                .wh(150, 50)
           ],
         ).p32(),
       ),
@@ -52,7 +53,13 @@ class HomeDetailsPage extends StatelessWidget {
                           catelog.name.text.xl2.bold
                               .color(MyThemes.blueishColor)
                               .make(),
-                          catelog.desc.text.make()
+                          catelog.desc.text.make(),
+                          14.heightBox,
+                          "Eirmod justo et dolor duo justo ipsum, sit diam dolor stet duo duo ipsum lorem. Invidunt sanctus diam dolores consetetur dolor nonumy, consetetur rebum labore ipsum sit amet kasd magna aliquyam. Diam justo lorem et duo amet diam stet ut. Voluptua sed eos dolores tempor stet eirmod, dolore ipsum sit no sit, est aliquyam duo voluptua stet ut takimata lorem magna et. Sed invidunt sanctus dolor et, vero vero et."
+                              .text
+                              .textStyle(context.captionStyle!)
+                              .make()
+                              .p16()
                         ],
                       ).py24(),
                     )))

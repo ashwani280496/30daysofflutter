@@ -39,7 +39,8 @@ class CateglogItem extends StatelessWidget {
       children: [
         Hero(
             tag: Key(categlog.id.toString()),
-            child: CatelogImage(image: categlog.image)),
+            child: CatelogImage(image: categlog.image)
+                .wPCT(context: context, widthPCT: 30)),
         Expanded(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -57,12 +58,12 @@ class CateglogItem extends StatelessWidget {
                             MaterialStateProperty.all(MyThemes.blueishColor),
                         shape: MaterialStateProperty.all(StadiumBorder())),
                     onPressed: () {},
-                    child: "Buy".text.bold.make())
+                    child: "Add to cart".text.bold.make())
               ],
             )
           ],
         ))
       ],
-    )).white.square(150).make().py16();
+    )).white.roundedLg.square(150).make().py16();
   }
 }

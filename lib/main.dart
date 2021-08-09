@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_catelog/Helper/routes.dart';
 import 'package:flutter_catelog/widgets/themes.dart';
 
+import 'Pages/cart_page.dart';
 import 'Pages/home_pages.dart';
 import 'Pages/login_page.dart';
 
@@ -29,6 +30,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => LoginPage(),
         MyRoutes.home: (context) => HomePage(),
+        MyRoutes.login: (context) => LoginPage(),
+        MyRoutes.cart: (context) => CartPage()
       },
     );
   }
