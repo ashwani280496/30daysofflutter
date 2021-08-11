@@ -4,12 +4,11 @@ class Store {
   static List<Item> items = [];
 
   // Get item by id
-  static Item getByID(int id) =>
-      items.firstWhere((element) => element.id == id);
+  Item getByID(int id) => items.firstWhere((element) => element.id == id);
 
   // Get item by position
 
-  static Item getItemAt({required int postion}) => items[postion];
+  Item getItemAt({required int postion}) => items[postion];
 }
 
 class Item {
