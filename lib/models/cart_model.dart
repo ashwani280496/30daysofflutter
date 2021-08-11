@@ -1,8 +1,14 @@
 import 'Item.dart';
 
 class CartModel {
+  static final cartModel = CartModel.internal();
+
+  CartModel.internal();
+
+  factory CartModel() => cartModel;
+
   //store field
-  late Store _store;
+  Store _store = Store();
 
   // item ids
   final List<int> cartItemIds = [];
