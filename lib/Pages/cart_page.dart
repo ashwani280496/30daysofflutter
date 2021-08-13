@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catelog/models/cart_model.dart';
 import 'package:flutter_catelog/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -30,7 +31,11 @@ class CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$${200}".text.xl5.color(context.accentColor).make(),
+          "\$${CartModel().totalPrice}"
+              .text
+              .xl5
+              .color(context.accentColor)
+              .make(),
           30.widthBox,
           ElevatedButton(
                   onPressed: () => {
@@ -53,14 +58,23 @@ class CartList extends StatefulWidget {
 }
 
 class _CartListState extends State<CartList> {
+  CartModel _cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 6,
-        itemBuilder: (context, index) => ListTile(
-              leading: Icon(Icons.done),
-              trailing: Icon(Icons.remove_circle_outline_outlined),
-              title: "title1".text.make(),
-            ));
+    return _cart.cartItems.isEmpty
+        ? "No item to show".text.make().centered()
+        : ListView.builder(
+            itemCount: _cart.cartItems.count(),
+            itemBuilder: (context, index) => ListTile(
+                  leading: Icon(Icons.done),
+                  trailing: IconButton(
+                    icon: Icon(Icons.remove),
+                    onPressed: () {
+                      _cart.remove(_cart.cartItems[index]);
+                      setState(() {});
+                    },
+                  ),
+                  title: _cart.cartItems[index].name.text.make(),
+                ));
   }
 }

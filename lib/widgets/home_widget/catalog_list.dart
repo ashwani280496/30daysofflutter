@@ -4,6 +4,7 @@ import 'package:flutter_catelog/models/Item.dart';
 import 'package:flutter_catelog/models/cart_model.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import 'add_to_cart.dart';
 import 'catalog_image.dart';
 
 class CatelogList extends StatelessWidget {
@@ -61,38 +62,5 @@ class CateglogItem extends StatelessWidget {
         ))
       ],
     )).color(context.cardColor).roundedLg.square(150).make().py16();
-  }
-}
-
-class AddToCartButton extends StatefulWidget {
-  final Item item;
-  const AddToCartButton({
-    Key? key,
-    required this.item,
-  }) : super(key: key);
-
-  @override
-  _AddToCartButtonState createState() => _AddToCartButtonState();
-}
-
-class _AddToCartButtonState extends State<AddToCartButton> {
-  bool isAdded = false;
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-        style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all(context.theme.buttonColor),
-            shape: MaterialStateProperty.all(StadiumBorder())),
-        onPressed: () {
-          print("Button pressed");
-          isAdded = isAdded.toggle();
-          final _cart = CartModel();
-          _cart.store = Store();
-          _cart.add(widget.item);
-          setState(() {});
-        },
-        child:
-            isAdded ? Icon(Icons.do_disturb) : "Add to cart".text.bold.make());
   }
 }
