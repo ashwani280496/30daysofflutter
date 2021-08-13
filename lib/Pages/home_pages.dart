@@ -6,7 +6,6 @@ import 'dart:convert';
 import 'package:flutter_catelog/models/Item.dart';
 import 'package:flutter_catelog/widgets/home_widget/catalog_header.dart';
 import 'package:flutter_catelog/widgets/home_widget/catalog_list.dart';
-import 'package:flutter_catelog/widgets/themes.dart';
 import "package:velocity_x/velocity_x.dart";
 
 class HomePage extends StatefulWidget {
@@ -42,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CateglogHeader(),
-                  if (Store.items.isNotEmpty)
+                  if (CatelogModel.items.isNotEmpty)
                     Expanded(child: CatelogList().pOnly(top: 16))
                   else
                     CircularProgressIndicator().centered().expand(),
@@ -57,7 +56,7 @@ class _HomePageState extends State<HomePage> {
         await rootBundle.loadString('assets/files/catalog.json');
     var decodedData = jsonDecode(catalogJson); // it is  Json string
     final productData = decodedData['products']; // it is in map form
-    Store.items =
+    CatelogModel.items =
         List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
 
     setState(() {});

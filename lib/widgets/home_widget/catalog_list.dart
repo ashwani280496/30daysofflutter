@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catelog/Pages/home_details.dart';
 import 'package:flutter_catelog/models/Item.dart';
-import 'package:flutter_catelog/models/cart_model.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'add_to_cart.dart';
@@ -14,9 +13,9 @@ class CatelogList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: Store.items.length,
+      itemCount: CatelogModel.items.length,
       itemBuilder: (context, index) {
-        final catelog = Store.items[index];
+        final catelog = CatelogModel.items[index];
         return InkWell(
           child: CateglogItem(categlog: catelog),
           onTap: () => Navigator.push(
