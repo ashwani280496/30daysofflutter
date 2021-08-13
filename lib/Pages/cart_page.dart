@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catelog/core/store.dart';
 import 'package:flutter_catelog/models/cart_model.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -25,16 +26,23 @@ class CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return SizedBox(
       height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$${CartModel().totalPrice}"
-              .text
-              .xl5
-              .color(context.accentColor)
-              .make(),
+          VxConsumer(
+            mutations: {RemoveMutation},
+            notifications: {},
+            builder: (context, _, _1) {
+              return "\$${_cart.totalPrice}"
+                  .text
+                  .xl5
+                  .color(context.accentColor)
+                  .make();
+            },
+          ),
           30.widthBox,
           ElevatedButton(
                   onPressed: () => {
@@ -50,9 +58,10 @@ class CartTotal extends StatelessWidget {
 }
 
 class CartList extends StatelessWidget {
-  final CartModel _cart = CartModel();
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [RemoveMutation]);
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return _cart.cartItems.isEmpty
         ? "No item to show".text.make().centered()
         : ListView.builder(
@@ -62,7 +71,7 @@ class CartList extends StatelessWidget {
                   trailing: IconButton(
                     icon: Icon(Icons.remove),
                     onPressed: () {
-                      _cart.remove(_cart.cartItems[index]);
+                      RemoveMutation(_cart.cartItems[index]);
                     },
                   ),
                   title: _cart.cartItems[index].name.text.make(),

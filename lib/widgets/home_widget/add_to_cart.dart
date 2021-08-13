@@ -14,7 +14,7 @@ class AddToCartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VxState.watch(context, on: [AddMutation]);
+    VxState.watch(context, on: [AddMutation, RemoveMutation]);
 
     final CartModel _cart = (VxState.store as MyStore).cart;
     bool isInCart = _cart.cartItems.contains(item);
@@ -28,7 +28,6 @@ class AddToCartButton extends StatelessWidget {
           if (!isInCart) {
             AddMutation(item);
           }
-          // setState(() {});
         },
         child: isInCart
             ? Icon(Icons.done_sharp)
