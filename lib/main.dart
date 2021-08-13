@@ -2,13 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_catelog/Helper/routes.dart';
 import 'package:flutter_catelog/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import 'Pages/cart_page.dart';
 import 'Pages/home_pages.dart';
 import 'Pages/login_page.dart';
+import 'core/store.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(VxState(store: MyStore(), child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {

@@ -1,24 +1,21 @@
+import 'package:flutter_catelog/core/store.dart';
+import 'package:velocity_x/velocity_x.dart';
+
 import 'Item.dart';
 
 class CartModel {
-  static final cartModel = CartModel.internal();
-
-  CartModel.internal();
-
-  factory CartModel() => cartModel;
-
   //store field
-  Store _store = Store();
+  CatelogModel _store = CatelogModel();
 
   // item ids
   final List<int> cartItemIds = [];
 
   // Get store
-  Store get store => _store;
+  CatelogModel get catalog => _store;
 
   // set store
 
-  set store(Store store) {
+  set catalog(CatelogModel store) {
     // ignore: unnecessary_null_comparison
     assert(_store != null);
     this._store = store;
@@ -37,4 +34,14 @@ class CartModel {
 
   // remove item
   void remove(Item item) => cartItemIds.remove(item.id);
+}
+
+class AddMutation extends VxMutation<MyStore> {
+  final Item item;
+
+  AddMutation(this.item);
+  @override
+  perform() {
+    store?.cart.cartItemIds.add(item.id);
+  }
 }
